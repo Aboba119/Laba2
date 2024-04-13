@@ -26,7 +26,7 @@ f.close()
 print(file)
 for i in range(len(file)):
     for j in range(len(file[i])):
-        if re.search('[02468]$', str(file[i][j])):
+        if re.search('[02468]$', str(file[i][j])) and str(file[i][j]).isdigit():
             nums = {i for i in str(file[i][j])}
             if len(nums) >= k:
                 print(file[i][j], *[chisla[int(num)] for num in str(file[i][j])])
