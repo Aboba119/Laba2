@@ -18,17 +18,15 @@ file = []
 chisla = {1: 'Один', 2: 'Два', 3: 'Три', 4: 'Четыре', 5: 'Пять', 6: 'Шесть', 7: 'Семь', 8: 'Восемь', 9: 'Девять',
           0: 'Ноль'}
 while True:
-    line = f.readline()
-    if not line:
+    linebeta = f.readline().split()
+    if not linebeta:
         break
-    file.append(line.split())
+    for n in linebeta:
+        if re.search(r'(\D|[13579]$)', n):
+            continue
+        file.append(n)
 f.close()
 print(file)
-for i in range(len(file)):
-    for j in range(len(file[i])):
-        if re.search('[/D]]', str(file[i][j])):
-            continue
-        if re.search('[02468]$', str(file[i][j])):
-            nums = {i for i in str(file[i][j])}
-            if len(nums) >= k:
-                print(file[i][j], *[chisla[int(num)] for num in str(file[i][j])])
+for num in file:
+    if len({i for i in str(num)}) >= k:
+        print(num, *[chisla[int(j)] for j in str(num)], sep=' ')
