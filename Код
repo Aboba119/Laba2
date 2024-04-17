@@ -18,10 +18,10 @@ file = []
 chisla = {1: 'Один', 2: 'Два', 3: 'Три', 4: 'Четыре', 5: 'Пять', 6: 'Шесть', 7: 'Семь', 8: 'Восемь', 9: 'Девять',
           0: 'Ноль'}
 while True:
-    linebeta = f.readline().split()
-    if not linebeta:
+    line = f.readline().split()
+    if not line:
         break
-    for n in linebeta:
+    for n in line:
         if re.search(r'(\D|[13579]$)', n):
             continue
         file.append(n)
